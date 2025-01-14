@@ -1,6 +1,7 @@
 package com.example.Expense_Tracker_Backend.Expense;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -40,7 +41,7 @@ public class ExpenseController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteExpense(@PathVariable String id) {
+    public ResponseEntity<String> deleteExpense(@PathVariable UUID id) {
         expenseService.deleteExpense(id);
         return new ResponseEntity<>("Expense Deleted Successfully", HttpStatus.OK);
     }
