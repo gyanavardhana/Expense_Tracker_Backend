@@ -7,4 +7,5 @@ public interface UserService {
     void addUser(User user);
     void editUser(User user);
     void removeUser(UUID id);
+    String verify(User user);
 }

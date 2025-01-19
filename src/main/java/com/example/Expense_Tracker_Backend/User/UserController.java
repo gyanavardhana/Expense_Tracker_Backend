@@ -33,6 +33,11 @@ public class UserController {
         return new ResponseEntity<>("User Created Successfully", HttpStatus.OK);
     }
 
+    @PostMapping("/login")
+    public ResponseEntity<String> loginUser(@RequestBody User user){
+        return new ResponseEntity<>(userService.verify(user), HttpStatus.OK);
+    }
+
     @PutMapping
     public ResponseEntity<String> editUser(@RequestBody User user){
         userService.editUser(user);
