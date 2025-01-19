@@ -8,4 +8,5 @@ public interface UserService {
     void editUser(User user);
     void removeUser(UUID id);
     String verify(User user);
+    User getUserbyEmail(String email);
 }

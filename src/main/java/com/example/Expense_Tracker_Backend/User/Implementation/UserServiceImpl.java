@@ -81,4 +81,10 @@ public class UserServiceImpl implements UserService {
             return jwtService.generateToken(user.getEmail());
         return "Failure";
     }
+
+    @Override
+    public User getUserbyEmail(String email){
+        return userRepository.findByEmail(email)
+        .orElseThrow(() -> new RuntimeException("User not found with email: " + email));
+    }
 }

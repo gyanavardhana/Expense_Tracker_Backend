@@ -27,6 +27,11 @@ public class ExpenseController {
         return ResponseEntity.ok(expenseService.findExpenses());
     }
 
+    @GetMapping("/{userid}")
+    public ResponseEntity<List<Expense>> findUserExpenses(@PathVariable UUID userid){
+        return ResponseEntity.ok(expenseService.findExpensesByUser(userid));
+    }
+
     @PostMapping
     public ResponseEntity<String> addExpense(@RequestBody Expense exp) {
         expenseService.addExpense(exp);

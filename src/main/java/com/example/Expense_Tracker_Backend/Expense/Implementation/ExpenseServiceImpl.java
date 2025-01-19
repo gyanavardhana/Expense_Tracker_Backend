@@ -65,10 +65,12 @@ public class ExpenseServiceImpl implements ExpenseService {
         return expenseRepository.findAll();
     }
 
+    @Override
     public List<Expense> findExpensesByUser(UUID userId) {
         if (!userRepository.existsById(userId)) {
             throw new RuntimeException("User with ID " + userId + " not found.");
         }
         return expenseRepository.findByUserId(userId); // Query by userId directly
     }
+
 }

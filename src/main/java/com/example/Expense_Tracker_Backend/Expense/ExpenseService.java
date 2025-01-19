@@ -5,6 +5,7 @@ import java.util.UUID;
 
 public interface ExpenseService {
     List<Expense> findExpenses();
+    List<Expense> findExpensesByUser(UUID id);
     void addExpense(Expense exp);
     void editExpense(Expense exp);
     void deleteExpense(UUID id);
