@@ -24,12 +24,13 @@ public class JwtFilter extends OncePerRequestFilter {
     private JwtService jwtService;
 
     @Autowired
-   private CustomUserDetailsService userDetailsService;
+    private CustomUserDetailsService userDetailsService;
 
     @SuppressWarnings("null")
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
+        System.out.println("Incoming request: " + request.getMethod() + " " + request.getRequestURI());
         String authHeader = request.getHeader("Authorization");
         String token = null;
         String useremail = null;

@@ -1,6 +1,5 @@
 package com.example.Expense_Tracker_Backend.config;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -34,14 +33,18 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .headers(headers -> headers.frameOptions().sameOrigin())
                 .authorizeHttpRequests(request -> request
-                        .requestMatchers( "/users/**", "/h2-console/**", "/register").permitAll()
+                        .requestMatchers(
+                                "/users/**",
+                                "/h2-console/**",
+                                "/swagger-ui/**",
+                                "/v3/api-docs/**"
+                        ).permitAll()
                         .anyRequest().authenticated())
                 .httpBasic(Customizer.withDefaults())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
     }
-    
 
     @Bean
     public AuthenticationProvider authenticationProvider() {
@@ -56,6 +59,5 @@ public class SecurityConfig {
         return config.getAuthenticationManager();
 
     }
-
 
 }
